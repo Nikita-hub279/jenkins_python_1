@@ -1,18 +1,24 @@
-pipeline {
- agent any
 
- stages {
- stage('Hello') {
- steps {
- echo 'Python code sucessfully executed'
- 
- }
- }
- stage('Execute Python') {
- steps {
- bat ' python product.py'
- 
- }
- }
- }
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Git Repo') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Nikita-hub279/jenkins_python_1'
+            }
+        }
+
+        stage('List Files') {
+            steps {
+                bat 'dir'
+            }
+        }
+
+        stage('Run Python Script') {
+            steps {
+                bat 'python product.py'
+            }
+        }
+    }
 }

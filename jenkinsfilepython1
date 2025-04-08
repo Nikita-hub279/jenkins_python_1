@@ -1,0 +1,18 @@
+pipeline {
+ agent any
+
+ stages {
+ stage('Hello') {
+ steps {
+ echo 'Python code sucessfully executed'
+ 
+ }
+ }
+ stage('Execute Python') {
+ steps {
+ bat ' python product.py'
+ 
+ }
+ }
+ }
+}
